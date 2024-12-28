@@ -1,27 +1,22 @@
 import socket
+import compras as c
 
 precio = 1500
+sold_limit = 5
+room_size = 50
 
-
-class Entrada:
-    def __init__(self, cant, asientos):
-        self.cant = cant
-        self.precio = cant * precio
-        self.asientos = asientos
-
-
-stream_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-
-# Definición del servidor
-host = 'localhost'
-
-port = 5555
-
-server_address = ((host, port))
-
-print("Conectando...")
 
 try:
+    stream_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+
+    # Definición del servidor
+    host = 'localhost'
+
+    port = 5555
+
+    server_address = ((host, port))
+    print("Conectando...")
+
     stream_socket.connect(server_address)
 
     message = 'Hola, servidor, soy el cliente'
