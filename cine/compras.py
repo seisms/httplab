@@ -20,7 +20,7 @@ class Espectaculo:
         return entr
 
     def CheckSeat(self, seat):
-        if (seat > room_size):
+        if (seat > room_size - 1):
             raise ComprarException(f"No existe el asiento {seat}")
         if (self.sala[seat].ocupado is True):
             raise ComprarException(f"El asiento {seat} ya fué comprado para el espectaculo {self.name}")

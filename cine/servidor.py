@@ -87,6 +87,7 @@ def Connection(connection, esp):
                     connection.sendall(response.encode('utf-8'))
                 except c.ComprarException as e:
                     response = BuildResponse_Exception(e)
+                    bought += len(asientos)
                     connection.sendall(response.encode('utf-8'))
             elif (message['operation'].lower() == "fecha-hora"):
                 response = BuildResponse_FechaHora(esp)
