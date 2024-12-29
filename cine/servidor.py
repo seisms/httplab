@@ -22,8 +22,7 @@ def RandDate():
 def RandHour():
     hour = random.randint(0, 23)
     minute = random.randint(0, 59)
-    second = random.randint(0, 59)
-    return time(hour, minute, second)
+    return time(hour, minute)
 
 
 def DecodeMessage(data):
@@ -110,13 +109,10 @@ def main():
     # Creación de socket TCP
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
-
     # Definición de host, quizás se deba cambiar por una dirección ip
     host = 'localhost'
-
     # Definición de puerto de comunicación
     port = 5555
-
     # Vincular el socket al puerto
     sock.bind((host, port))
 

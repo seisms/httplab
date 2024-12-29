@@ -13,17 +13,18 @@ class Espectaculo:
     def Comprar(self, sold):
         if (len(sold) > sold_limit):
             raise ComprarException(f"No puedes comprar más de {sold_limit} entradas")
+        self.CheckSeat(sold)
         for i in sold:
-            self.CheckSeat(i)
             self.sala[i].ocupado = True
         entr = Entrada(len(sold), sold)
         return entr
 
-    def CheckSeat(self, seat):
-        if (seat > room_size - 1):
-            raise ComprarException(f"No existe el asiento {seat}")
-        if (self.sala[seat].ocupado is True):
-            raise ComprarException(f"El asiento {seat} ya fué comprado para el espectaculo {self.name}")
+    def CheckSeat(self, sold):
+        for seat in sold:
+            if (seat > room_size - 1):
+                raise ComprarException(f"No existe el asiento {seat}")
+            if (self.sala[seat].ocupado is True):
+                raise ComprarException(f"El asiento {seat} ya fué comprado para el espectaculo {self.name}")
 
 
 class Asiento:
